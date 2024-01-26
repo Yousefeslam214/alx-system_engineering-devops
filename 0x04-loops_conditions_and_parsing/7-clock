@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# Bash script
+
+counter=1
+clock=60
+iter=1
+echo "Hour= 0"
+while [ $counter -le 60 ]; do
+    if [ $((counter % 60)) -eq 0 ]; then
+        ((iter++))
+        if [ $iter -eq 13 ]; then
+            break
+        fi
+        echo "Hour= $iter"
+        counter=$((counter / 60))
+    else
+        echo "$counter"
+    fi
+    ((counter++))
+done
