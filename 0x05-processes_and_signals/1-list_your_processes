@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # bash script
 
-ps axo user,pid,%cpu,%mem,vsz,rss,tty,stat,start,time,command
+ps -auxf
