@@ -2,16 +2,16 @@
 # Bash script
 
 counter=1
-iter=1
-echo "Hour= 0"
+iter=0
+echo "Hour: $iter"
 while [ $counter -le 60 ]; do
     if [ $((counter % 60)) -eq 0 ]; then
         ((iter++))
         if [ $iter -eq 13 ]; then
             break
         fi
-        echo "Hour= $iter"
-        counter=$((counter / 60))
+        echo "Hour: $iter"
+        counter=0
     else
         echo "$counter"
     fi
