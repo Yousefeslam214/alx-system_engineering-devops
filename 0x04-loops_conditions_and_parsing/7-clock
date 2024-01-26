@@ -2,7 +2,6 @@
 # Bash script
 
 counter=1
-clock=60
 iter=1
 echo "Hour= 0"
 while [ $counter -le 60 ]; do
