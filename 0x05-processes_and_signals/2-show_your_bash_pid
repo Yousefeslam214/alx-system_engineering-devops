@@ -2,4 +2,4 @@
 # shellcheck disable=SC2009
 # bash script
 
-ps -eH | grep bash
+ps -aux | grep bash
