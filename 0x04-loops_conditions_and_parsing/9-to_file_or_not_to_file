@@ -1,22 +1,17 @@
 #!/usr/bin/env bash
 # bash script
 
-file_path="/home/yousef/Desktop/programing/alx-system_engineering-devops/0x04-loops_conditions_and_parsing/school"
 
 
 
-if [ -e "$file_path" ]; then
-    if [ -d "$file_path" ]; then
-        echo "school exists but it’s a directory"
+if [ -e "school" ]; then
+    echo "school file exists"
+    if [ -s "school" ]; then
+        echo "school file is not empty"
     else
-        echo "school file exists"
-        if [ -s "$file_path" ]; then
-            echo "school file is not empty"
-        else
-            echo "school file is empty"
-        fi
+        echo "school file is empty"
     fi
-    if [ -f "$file_path" ]; then
+    if [ -f "school" ]; then
         echo "school is a regular file"
     fi
 else
