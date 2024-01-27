@@ -6,7 +6,11 @@ file_path="/home/yousef/Desktop/programing/alx-system_engineering-devops/0x04-lo
 
 
 if [ -e "$file_path" ]; then
-    echo "school file exists"
+    if [ -d "$file_path" ]; then
+        echo "school exists but it’s a directory"
+    else
+        echo "school file exists"
+    fi
     if [ -s "$file_path" ]; then
         echo "school file is not empty"
     else
