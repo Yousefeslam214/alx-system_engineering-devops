@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
 # bash script
 
-kill $(pgrep -f "4-to_infinity_and_beyond")
+PID=$(pgrep -f "4-to_infinity_and_beyond")
+
+if [ -n "$PID" ]; then
+    kill -15 "$PID"
+fi
