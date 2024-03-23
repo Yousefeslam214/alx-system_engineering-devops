@@ -1,6 +1,6 @@
-#a manifest that kills a process named
+# File: 2-execute_a_command.pp
 
-exec {'pkill killmenow':
-    command => 'pkill killmenow',
-    provider => shell,
+exec { 'killmenow':
+  command => 'pkill killmenow',
+  path    => '/bin:/usr/bin:/sbin:/usr/sbin',
 }
