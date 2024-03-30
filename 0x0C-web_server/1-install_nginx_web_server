@@ -3,7 +3,6 @@
 
 sudo apt-get -y update  && \
 sudo apt-get -y install nginx
-sudo ufw allow 'Nginx HTTP';
 if [ $? -eq 0 ]
 then
     echo -e \
