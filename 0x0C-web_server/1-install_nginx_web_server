@@ -1,7 +1,37 @@
-#!/usr/bin/env bash
-# Installs Nginx
+#!/bin/bash
 
-apt-get update
-apt-get install -y nginx
-echo "Hello World!" > /var/www/html/index.html
-service nginx start
+# Update package lists and install Nginx
+sudo apt-get -y update && \
+sudo apt-get -y install nginx
+
+# Check if Nginx installation was successful
+if [ $? -eq 0 ]; then
+    # Create the index.html file with "Hello World!" content
+    echo "Hello World!" | sudo tee /var/www/html/index.html > /dev/null
+
+    # Restart Nginx (without systemctl)
+    sudo service nginx restart
+
+    # Check if Nginx is listening on port 80
+    netstat -tuln | grep ':80' > /dev/null
+    if [ $? -eq 0 ]; then
+        echo "Nginx is listening on port 80"
+    else
+        echo "Nginx is not listening on port 80"
+        exit 1
+    fi
+
+    # Check if accessing Nginx at root returns "Hello World!"
+    curl -s localhost | grep -q "Hello World!"
+    if [ $? -eq 0 ]; then
+        echo "Successfully accessed Nginx at root"
+    else
+        echo "Failed to access Nginx at root"
+        exit 1
+    fi
+else
+    echo "Could not install Nginx"
+    exit 1
+fi
+
+exit 0
