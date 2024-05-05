@@ -1,49 +1,16 @@
-#!/bin/bash
+#!/usr/bin/env bash
+# Takes a subdomain and a domain and returns information about the subdomain
 
-# Function to query the DNS for a subdomain and display the results
-query_subdomain() {
-  local domain=$1
-  local subdomain=$2
-  
-  # Perform the DNS query using dig
-  result=$(dig "${subdomain}.${domain}" | grep -A1 'ANSWER SECTION:')
-  
-  # Check if an answer section was found
-  if [[ -n "$result" ]];  then
-    # Parse the result using awk to extract the record type and destination IP
-    echo "$result" | awk -v subdomain="$subdomain" 'NR==2 {
-      print "The subdomain " subdomain " is a " $4 " record and points to " $5
-    }'
-  else
-    echo "No record found for ${subdomain}.${domain}"
-  fi
+print_info () {
+    dig "$1" | grep -A1 'ANSWER SECTION:' | sed -r "s/$1./$2/g" | awk -F" " ' NR==2 { print "The subdomain " $1 " is a " $4 " record and points to " $5 }'
 }
 
-# Main script
-main() {
-  # Check if the correct number of arguments is provided
-  if [[ $# -lt 1 || $# -gt 2 ]]; then
-    echo "Usage: $0 domain [subdomain]"
-    exit 1
-  fi
-
-  # Extract the domain and subdomain from the arguments
-  domain=$1
-  subdomain=$2
-  
-  # List of subdomains to check
-  subdomains=("www" "lb-01" "web-01" "web-02")
-  
-  # If a specific subdomain is provided, only check that one
-  if [[ -n "$subdomain" ]]; then
-    query_subdomain "$domain" "$subdomain"
-  else
-    # Otherwise, check all predefined subdomains in order
-    for sub in "${subdomains[@]}"; do
-      query_subdomain "$domain" "$sub"
-    done
-  fi
-}
-
-# Run the main function
-main "$@"
+if [ "$#" -eq 2 ]
+then
+    print_info "$2.$1" "$2"
+else
+    print_info "www.$1" "www"
+    print_info "lb-01.$1" "lb-01"
+    print_info "web-01.$1" "web-01"
+    print_info "web-02.$1" "web-02"
+fi
