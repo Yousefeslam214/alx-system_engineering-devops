@@ -1,0 +1,15 @@
+When you enter a URL like https://www.google.com into your browser, a complex series of steps occur behind the scenes to deliver the requested web page. Here's an optimized overview of the process:
+
+DNS Resolution: The browser queries the Domain Name System (DNS) to convert the human-readable URL (e.g., www.google.com) into an IP address (e.g., 216.58.194.174).
+HTTP Request: The browser sends an HTTP GET request to the server at the resolved IP address, specifying the path and any query parameters from the URL.
+Server Processing: The server processes the request and generates an HTTP response, including a status code and the requested content (e.g., HTML, images, scripts).
+Rendering Content: The browser receives the response and renders the content on the screen, parsing HTML, executing scripts, and fetching additional resources like CSS and images.
+Additional Resource Requests: If the response includes external resources, the browser sends additional requests to fetch those resources.
+TCP/IP Connection: The browser establishes a TCP/IP connection with the server to facilitate secure data transfer.
+Firewall Security Check: The request passes through one or more firewalls for security checks, ensuring safe access to the website.
+HTTPS/SSL Encryption: A secure HTTPS/SSL connection is established between the browser and the server, ensuring encrypted data transit.
+Load Balancing: The request is directed to a load balancer, which distributes incoming traffic across multiple web servers to ensure efficient and reliable service.
+Web Server Processing: The request is handled by a web server, which may involve processing HTTP requests and returning HTML responses.
+Application Server (Optional): If necessary, the request may be forwarded to an application server for dynamic content generation.
+Database Interaction: Data may be stored or retrieved from a database, which manages client data storage and retrieval.
+Response Delivery: The processed information is returned to the browser, completing the request cycle.
