@@ -20,8 +20,9 @@ if __name__ == "__main__":
     # Write data to CSV file
     with open(filename, mode='w') as file:
         writer = csv.writer(file, delimiter=',', quotechar='"',
-                                quoting=csv.QUOTE_ALL, lineterminator='\n')
+                            quoting=csv.QUOTE_ALL, lineterminator='\n')
 
         for task in todos.json():
             if task.get('userId') == int(userId):
-                writer.writerow([userId , name, str(task.get('completed')), task.get('title')])
+                writer.writerow([userId, name, str(task.get('completed')),
+                                 task.get('title')])
