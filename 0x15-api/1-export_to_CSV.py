@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""For a given employee ID, fun returns information about
+"""For a given employee ID, returns information about
 their TODO list progress"""
 
 
