@@ -5,7 +5,6 @@ their TODO list progress"""
 
 if __name__ == "__main__":
 
-
     import csv
     import requests
     import sys
