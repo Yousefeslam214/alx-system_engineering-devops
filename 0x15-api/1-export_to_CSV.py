@@ -4,6 +4,8 @@ their TODO list progress"""
 
 
 if __name__ == "__main__":
+
+
     import csv
     import requests
     import sys
@@ -12,9 +14,9 @@ if __name__ == "__main__":
     user = requests.get("https://jsonplaceholder.typicode.com/users/{}"
                         .format(userId))
 
-    name = user.json().get('name')
-
+    name = user.json().get('username')
     todos = requests.get('https://jsonplaceholder.typicode.com/todos')
+
     filename = userId + '.csv'
 
     # Write data to CSV file
