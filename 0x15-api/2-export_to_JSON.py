@@ -15,7 +15,7 @@ if __name__ == "__main__":
 
     todoUser = {}
     taskList = []
-    
+
     for task in todos:
         if task.get('userId') == int(userId):
             taskDict = {"task": task.get('title'),
